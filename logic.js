@@ -1,6 +1,6 @@
 async function storeData() {
   let form = document.getElementById("myForm");
-  let name = form["name"].value;
+  let myname = form["name"].value;
   let profession = form["profession"].value;
   let age = form["age"].value;
 
@@ -13,11 +13,11 @@ async function storeData() {
 
   var raw = JSON.stringify({
     organization: 26724,
-    title: "Information Page of " + name,
+    title: "Information Page of " + myname,
     markdown_body: "",
     html_body:
       "<title>HTML Forms</title><h1>" +
-      name +
+      myname +
       "</h1><p>" +
       profession +
       "</p><p>" +
@@ -64,7 +64,7 @@ async function storeData() {
   myHeaders.append("Content-Type", "application/json");
 
   var raw = JSON.stringify({
-    name: "Markdown Card",
+    myname: "Markdown Card",
     organization: 26724,
     qr_type: 2,
     campaign: {
@@ -92,7 +92,7 @@ async function storeData() {
   );
   let parsedResponse2 = await response2.json();
   let qr_id = parsedResponse.id;
-  console.log("qr_id", parsedResponse.id);
+  console.log("qr_id", qr_id);
 
   //************************************************************** */
   var myHeaders = new Headers();
@@ -104,8 +104,32 @@ async function storeData() {
     redirect: 'follow'
   };
   
-  fetch("https://api.beaconstac.com/api/2.0/qrcodes/1561020/download/?size=1024&error_correction_level=5&canvas_type=png", requestOptions)
-    .then(response => response.json())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+  let response3 = await fetch(
+    "https://api.beaconstac.com/api/2.0/qrcodes/1561020/download/?size=1024&error_correction_level=5&canvas_type=png", 
+    requestOptions
+  );
+  let parsedResponse3 = await response3.json();
+  // console.log(parsedResponse3);
+  let qr_link = parsedResponse3.urls;
+  console.log("qr_link", qr_link);
+
+  // fetch("https://api.beaconstac.com/api/2.0/qrcodes/1561020/download/?size=1024&error_correction_level=5&canvas_type=png", requestOptions)
+  //   .then(response => response.json())
+  //   .then(result => console.log(result))
+  //   .catch(error => console.log('error', error));  
+  downloadImage(qr_link.png, myname);
 }
+
+async function downloadImage(imageSrc, myname) {
+  const image = await fetch(imageSrc)
+  const imageBlog = await image.blob()
+  const imageURL = URL.createObjectURL(imageBlog)
+
+  const link = document.createElement('a')
+  link.href = imageURL
+  link.download = String(myname)+ "'s " + "QR";
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}
+
