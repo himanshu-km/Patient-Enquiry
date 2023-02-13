@@ -1,4 +1,4 @@
-async function storeData() {
+async function createLanding() {
   let form = document.getElementById("myForm");
   let myname = form["name"].value;
   let profession = form["profession"].value;
@@ -33,29 +33,18 @@ async function storeData() {
     redirect: "follow",
   };
 
-  // let markdown_id;
-  // fetch("https://api.beaconstac.com/api/2.0/markdowncards/", requestOptions)
-  //   .then((response) => {
-  //     return response.json();
-  //   })
-  //   .then((result) => {
-  //     console.log(result);
-  //     markdown_id = result.id;
-  //   })
-  //   .catch((error) => console.log("error", error));
-
-  //   console.log("thisisxxx", markdown_id);
-
   let response = await fetch(
     "https://api.beaconstac.com/api/2.0/markdowncards/",
     requestOptions
   );
   let parsedResponse = await response.json();
-  // console.log(parsedResponse);
   let markdown_id = parsedResponse.id;
   console.log("markdown_id", markdown_id);
 
-  //******************************************************************************** */
+  createQR(markdown_id, myname);
+}
+
+async function createQR(markdown_id, myname){
   var myHeaders = new Headers();
   myHeaders.append(
     "Authorization",
@@ -91,11 +80,14 @@ async function storeData() {
     requestOptions
   );
   let parsedResponse2 = await response2.json();
-  let qr_id = parsedResponse.id;
+  let qr_id = parsedResponse2.id;
   console.log("qr_id", qr_id);
 
-  //************************************************************** */
-  var myHeaders = new Headers();
+  downloadQR(qr_id, myname);
+}
+
+async function downloadQR(qr_id, myname){
+    var myHeaders = new Headers();
   myHeaders.append("Authorization", "Token afa6b7d257e09642868a47dbdbf3e8b03fbf422c");
   
   var requestOptions = {
