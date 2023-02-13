@@ -95,4 +95,17 @@ async function storeData() {
   console.log("qr_id", parsedResponse.id);
 
   //************************************************************** */
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Token afa6b7d257e09642868a47dbdbf3e8b03fbf422c");
+  
+  var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+  
+  fetch("https://api.beaconstac.com/api/2.0/qrcodes/1561020/download/?size=1024&error_correction_level=5&canvas_type=png", requestOptions)
+    .then(response => response.json())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
 }
