@@ -91,7 +91,7 @@ async function storeData() {
     requestOptions
   );
   let parsedResponse2 = await response2.json();
-  let qr_id = parsedResponse.id;
+  let qr_id = parsedResponse2.id;
   console.log("qr_id", qr_id);
 
   //************************************************************** */
@@ -105,11 +105,11 @@ async function storeData() {
   };
   
   let response3 = await fetch(
-    "https://api.beaconstac.com/api/2.0/qrcodes/1561020/download/?size=1024&error_correction_level=5&canvas_type=png", 
+    "https://api.beaconstac.com/api/2.0/qrcodes/"+ String(qr_id) +"/download/?size=1024&error_correction_level=5&canvas_type=png", 
     requestOptions
   );
   let parsedResponse3 = await response3.json();
-  // console.log(parsedResponse3);
+  console.log(parsedResponse3);
   let qr_link = parsedResponse3.urls;
   console.log("qr_link", qr_link);
 
@@ -121,12 +121,14 @@ async function storeData() {
 }
 
 async function downloadImage(imageSrc, myname) {
-  const image = await fetch(imageSrc)
-  const imageBlog = await image.blob()
-  const imageURL = URL.createObjectURL(imageBlog)
+  console.log(imageSrc)
+  // const image = await fetch(imageSrc)
+  // const imageBlog = await image.blob()
+  // const imageURL = URL.createObjectURL(imageBlog)
 
   const link = document.createElement('a')
-  link.href = imageURL
+  // link.href = imageURL
+  link.href=imageSrc;
   link.download = String(myname)+ "'s " + "QR";
   document.body.appendChild(link)
   link.click()
