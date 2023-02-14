@@ -39,6 +39,11 @@ async function createLanding() {
   createQR(markdown_id, myname);
 }
 
+
+
+
+
+
 async function createQR(markdown_id, myname){
   var myHeaders = new Headers();
   myHeaders.append(
@@ -81,6 +86,11 @@ async function createQR(markdown_id, myname){
   downloadQR(qr_id, myname);
 }
 
+
+
+
+
+
 async function downloadQR(qr_id, myname){
     var myHeaders = new Headers();
   myHeaders.append("Authorization", "Token afa6b7d257e09642868a47dbdbf3e8b03fbf422c");
@@ -92,7 +102,7 @@ async function downloadQR(qr_id, myname){
   };
   
   let response3 = await fetch(
-    "https://api.beaconstac.com/api/2.0/qrcodes/1561020/download/?size=1024&error_correction_level=5&canvas_type=png", 
+    "https://api.beaconstac.com/api/2.0/qrcodes/"+ qr_id +"/download/?size=1024&error_correction_level=5&canvas_type=png", 
     requestOptions
   );
   let parsedResponse3 = await response3.json();
