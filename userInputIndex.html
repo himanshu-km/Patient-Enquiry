@@ -9,11 +9,12 @@
      
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
-    <title>Patient Enquiry </title> 
+    <title>Patient Registration</title> 
 </head>
 <body>
     <div class="container">
-        <header>Registration</header>
+        <header>Patient Registration</header>
+        <!-- <span>Please fill in the form below</span>> -->
 
         <form action="#">
             <div class="form first">
@@ -58,7 +59,8 @@
                     </div>
                 </div>
 
-                <div class="details ID">
+
+                <div class="details id">
                     <span class="title">Identity Details</span>
 
                     <div class="fields">
@@ -76,20 +78,32 @@
                             <label>Issued Authority</label>
                             <input type="text" placeholder="Enter issued authority" required>
                         </div>
+                    </div>
 
+                </div> 
+
+                <div class="details emergency">
+                    <span class="title">Emergency Contact</span>
+
+                    <div class="fields">
                         <div class="input-field">
-                            <label>Issued State</label>
-                            <input type="text" placeholder="Enter issued state" required>
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Enter your name" required>
                         </div>
 
                         <div class="input-field">
-                            <label>Issued Date</label>
-                            <input type="date" placeholder="Enter your issued date" required>
+                            <label>Mobile Number</label>
+                            <input type="number" placeholder="Enter mobile number" required>
                         </div>
 
                         <div class="input-field">
-                            <label>Expiry Date</label>
-                            <input type="date" placeholder="Enter expiry date" required>
+                            <label>Gender</label>
+                            <select required>
+                                <option disabled selected>Select gender</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Others</option>
+                            </select>
                         </div>
                     </div>
 
@@ -97,7 +111,8 @@
                         <span class="btnText">Next</span>
                         <i class="uil uil-navigator"></i>
                     </button>
-                </div> 
+                </div>
+
             </div>
 
             <div class="form second">
@@ -137,38 +152,52 @@
                     </div>
                 </div>
 
-                <div class="details family">
-                    <span class="title">Family Details</span>
+                <div class="details address">
+                    <span class="title">Health History</span>
 
                     <div class="fields">
                         <div class="input-field">
-                            <label>Father Name</label>
-                            <input type="text" placeholder="Enter father name" required>
+                            <label>Reason for Registration</label>
+                            <input type="text" placeholder="Enter reason" required>
                         </div>
 
                         <div class="input-field">
-                            <label>Mother Name</label>
-                            <input type="text" placeholder="Enter mother name" required>
+                            <label>Criticality</label>
+                            <select required>
+                                <option disabled selected>Select criticality</option>
+                                <option>Critical</option>
+                                <option>Not Critical</option>
+                            </select>
                         </div>
 
                         <div class="input-field">
-                            <label>Grandfather</label>
-                            <input type="text" placeholder="Enter grandfther name" required>
+                            <label>Ongoing Medication?</label>
+                            <select required>
+                                <option disabled selected>Select</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details family">
+                    <span class="title">Insurance Information</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Insurance Company</label>
+                            <input type="text" placeholder="Enter company" required>
                         </div>
 
                         <div class="input-field">
-                            <label>Spouse Name</label>
-                            <input type="text" placeholder="Enter spouse name" required>
+                            <label>Insurance ID</label>
+                            <input type="text" placeholder="Enter ID" required>
                         </div>
 
                         <div class="input-field">
-                            <label>Father in Law</label>
-                            <input type="text" placeholder="Father in law name" required>
-                        </div>
-
-                        <div class="input-field">
-                            <label>Mother in Law</label>
-                            <input type="text" placeholder="Mother in law name" required>
+                            <label>Policy Holder's Name</label>
+                            <input type="text" placeholder="Enter name" required>
                         </div>
                     </div>
 
