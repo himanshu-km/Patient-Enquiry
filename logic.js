@@ -1,8 +1,9 @@
 async function createLanding() {
   let form = document.getElementById("myForm");
-  let myname = form["name"].value;
-  let profession = form["profession"].value;
-  let age = form["age"].value;
+  // let myname = form["name"].value;
+  // let profession = form["profession"].value;
+  // let age = form["age"].value;
+  let myname = "john"
 
   var myHeaders = new Headers();
   myHeaders.append(
@@ -16,13 +17,7 @@ async function createLanding() {
     title: "Information Page of " + myname,
     markdown_body: "",
     html_body:
-      "<title>HTML Forms</title><h1>" +
-      myname +
-      "</h1><p>" +
-      profession +
-      "</p><p>" +
-      String(age) +
-      "</p>",
+      "<title>HTML Forms</title><h1>Hey</h1>",
     css_body: "",
   });
 
