@@ -3,7 +3,7 @@ async function createLanding() {
   // let myname = form["name"].value;
   // let profession = form["profession"].value;
   // let age = form["age"].value;
-  let myname = "john"
+  let myname = "doe"
 
   var myHeaders = new Headers();
   myHeaders.append(
@@ -17,7 +17,7 @@ async function createLanding() {
     title: "Information Page of " + myname,
     markdown_body: "",
     html_body:
-      "<title>HTML Forms</title><h1>Hey</h1>",
+      "<title>HTML Forms</title><h1>Test4</h1>",
     css_body: "",
   });
 
@@ -39,11 +39,6 @@ async function createLanding() {
   createQR(markdown_id, myname);
 }
 
-
-
-
-
-
 async function createQR(markdown_id, myname){
   var myHeaders = new Headers();
   myHeaders.append(
@@ -53,7 +48,7 @@ async function createQR(markdown_id, myname){
   myHeaders.append("Content-Type", "application/json");
 
   var raw = JSON.stringify({
-    myname: "Markdown Card",
+    name: "Markdown Card",
     organization: 26724,
     qr_type: 2,
     campaign: {
@@ -83,15 +78,12 @@ async function createQR(markdown_id, myname){
   let qr_id = parsedResponse2.id;
   console.log("qr_id", qr_id);
 
-  downloadQR(qr_id, myname);
+  downloadQR(qr_id);
 }
 
 
-
-
-
-
 async function downloadQR(qr_id, myname){
+   console.log("from downloadQR", qr_id, myname)
     var myHeaders = new Headers();
   myHeaders.append("Authorization", "Token afa6b7d257e09642868a47dbdbf3e8b03fbf422c");
   
@@ -101,12 +93,13 @@ async function downloadQR(qr_id, myname){
     redirect: 'follow'
   };
   
+  // console.log("https://api.beaconstac.com/api/2.0/qrcodes/"+ qr_id +"/download/?size=1024&error_correction_level=5&canvas_type=png");
   let response3 = await fetch(
-    "https://api.beaconstac.com/api/2.0/qrcodes/"+ qr_id +"/download/?size=1024&error_correction_level=5&canvas_type=png", 
+    "https://appserver.beaconstac.com/api/2.0/qrcodes/"+qr_id+"/download/?size=1024&canvas_type=png",
     requestOptions
   );
   let parsedResponse3 = await response3.json();
-  // console.log(parsedResponse3);
+  console.log("parsedResponsePrinted", parsedResponse3);
   let qr_link = parsedResponse3.urls;
   console.log("qr_link", qr_link);
 
@@ -114,19 +107,53 @@ async function downloadQR(qr_id, myname){
   //   .then(response => response.json())
   //   .then(result => console.log(result))
   //   .catch(error => console.log('error', error));  
-  downloadImage(qr_link.png, myname);
+  downloadImage(qr_link.png);
 }
 
-async function downloadImage(imageSrc, myname) {
+async function downloadImage(imageSrc) {
   const image = await fetch(imageSrc)
   const imageBlog = await image.blob()
   const imageURL = URL.createObjectURL(imageBlog)
 
   const link = document.createElement('a')
-  link.href = imageURL
-  link.download = String(myname)+ "'s " + "QR";
+  link.href = imageSrc;
+  link.download = "Your " + "QR";
   document.body.appendChild(link)
   link.click()
   document.body.removeChild(link)
 }
 
+/* 
+async function deleteAll()
+{
+  var myHeaders = new Headers();
+  myHeaders.append(
+    "Authorization",
+    "Token afa6b7d257e09642868a47dbdbf3e8b03fbf422c"
+  );
+  myHeaders.append("Content-Type", "application/json");
+
+  var requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+  let data;
+  do {
+
+    let final=await fetch(
+      "https://api.beaconstac.com/api/2.0/markdowncards/",
+      requestOptions
+      )
+      data= await final.json();
+      let results=data.results;
+      console.log(results);
+      for(let i=0;i<results.length;i++)
+      {
+        fetch("https://appserver.beaconstac.com/api/2.0/markdowncards/"+String(results[i].id)+"/?organization=26724&force_delete=true",{method:"DELETE",headers:myHeaders})
+        .then(console.log("Deleted index"+String(i)));
+      }
+    }while(data.next);
+
+  }
+*/    
