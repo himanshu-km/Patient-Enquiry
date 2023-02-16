@@ -22,7 +22,7 @@
 
         <form action="#">
             <div class="form first">
-                <div class="details personal">
+                <!-- <div class="details personal">
                     <span class="title">Personal Details</span>
 
                     <div class="fields">
@@ -84,7 +84,7 @@
                         </div>
                     </div>
 
-                </div> 
+                </div>  -->
 
                 <div class="details emergency">
                     <span class="title">Emergency Contact</span>
@@ -92,17 +92,18 @@
                     <div class="fields">
                         <div class="input-field">
                             <label>Full Name</label>
-                            <input type="text" placeholder="Enter your name" required>
+                            <input type="text" placeholder="Enter your name" value = "lisa" required>
                         </div>
 
                         <div class="input-field">
                             <label>Mobile Number</label>
-                            <input type="number" placeholder="Enter mobile number" required>
+                            <input type="number" placeholder="Enter mobile number" value = "1234" required>
                         </div>
 
                         <div class="input-field">
                             <label>Gender</label>
-                            <select required>
+                            <!-- <select required> -->
+                            <select>
                                 <option disabled selected>Select gender</option>
                                 <option>Male</option>
                                 <option>Female</option>
@@ -120,7 +121,7 @@
             </div>
 
             <div class="form second">
-                <div class="details address">
+                <!-- <div class="details address">
                     <span class="title">Address Details</span>
 
                     <div class="fields">
@@ -156,7 +157,7 @@
                     </div>
                 </div>
 
-                <div class="details address">
+                <div class="details health">
                     <span class="title">Health History</span>
 
                     <div class="fields">
@@ -183,25 +184,25 @@
                             </select>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="details family">
+                <div class="details insurance">
                     <span class="title">Insurance Information</span>
 
                     <div class="fields">
                         <div class="input-field">
                             <label>Insurance Company</label>
-                            <input type="text" placeholder="Enter company" required>
+                            <input type="text" placeholder="Enter company" value = "lisa" required>
                         </div>
 
                         <div class="input-field">
                             <label>Insurance ID</label>
-                            <input type="text" placeholder="Enter ID" required>
+                            <input type="text" placeholder="Enter ID" value = "lisa" required>
                         </div>
 
                         <div class="input-field">
                             <label>Policy Holder's Name</label>
-                            <input type="text" placeholder="Enter name" required>
+                            <input type="text" placeholder="Enter name" value = "lisa" required>
                         </div>
                     </div>
 
@@ -214,6 +215,11 @@
                         <button id = "submit_btn" class="submit" onclick="createLanding()">
                             <span id = "btn_content" class="btnText">Download QR</span>
                             <i class="uil-download-alt"></i>
+                        </button>
+
+                        <button id = "listview_btn" class="listview" onclick="displayQRs()">
+                            <span id = "listview_btn_content" class="btnText">View QRs</span>
+                            <i class="uil uil-navigator"></i>
                         </button>
                     </div>
                 </div> 
