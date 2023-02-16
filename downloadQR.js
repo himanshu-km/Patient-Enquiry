@@ -1,4 +1,9 @@
 async function createLanding() {
+
+  let btn = document.getElementById("btn_content");
+  btn.innerHTML = 'Downloading...';
+  document.getElementById('submit_btn').disabled = true;
+
   let form = document.getElementById("myForm");
   // let myname = form["name"].value;
   // let profession = form["profession"].value;
@@ -108,6 +113,11 @@ async function downloadQR(qr_id, myname){
   //   .then(result => console.log(result))
   //   .catch(error => console.log('error', error));  
   downloadImage(qr_link.png);
+
+  
+  // document.getElementById('submit_btn').innerHTML = '<div class="boxLoading">Downloaded</div>';
+  document.getElementById('btn_content').innerHTML = 'Download Again';
+  document.getElementById('submit_btn').disabled = false;
 }
 
 async function downloadImage(imageSrc) {

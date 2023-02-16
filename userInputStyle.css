@@ -135,6 +135,9 @@ form .fields .input-field{
 form button:hover{
     background-color: #265df2;
 }
+form button:disabled{
+    background-color: #658bf3;
+}
 form button i,
 form .backBtn i{
     margin: 0 6px;
@@ -212,3 +215,4 @@ form .buttons button , .backBtn{
         opacity: 0;
     }
 }
+
