@@ -9,16 +9,20 @@
      
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
-    <title>Patient Registration</title> 
+    <title>Patient Registration</title>
 </head>
 <body>
+    <div class="loader_bg">
+        <div class="loader"></div>
+    </div>
+    
     <div class="container">
         <header>Patient Registration</header>
         <!-- <span>Please fill in the form below</span>> -->
 
         <form action="#">
             <div class="form first">
-                <div class="details personal">
+                <!-- <div class="details personal">
                     <span class="title">Personal Details</span>
 
                     <div class="fields">
@@ -80,7 +84,7 @@
                         </div>
                     </div>
 
-                </div> 
+                </div>  -->
 
                 <div class="details emergency">
                     <span class="title">Emergency Contact</span>
@@ -116,7 +120,7 @@
             </div>
 
             <div class="form second">
-                <div class="details address">
+                <!-- <div class="details address">
                     <span class="title">Address Details</span>
 
                     <div class="fields">
@@ -179,7 +183,7 @@
                             </select>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="details family">
                     <span class="title">Insurance Information</span>
@@ -207,7 +211,7 @@
                             <span class="btnText">Go Back</span>
                         </div>
                         
-                        <button class="sumbit" onclick="createLanding()">
+                        <button class="submit" onclick="createLanding()">
                             <span class="btnText">Download QR</span>
                             <i class="uil-download-alt"></i>
                         </button>
@@ -216,8 +220,17 @@
             </div>
         </form>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <script>
+        setTimeout(function(){
+            $('.loader_bg').fadeToggle();
+        }, 1000);
+    </script>
+    
     <script src="downloadQR.js"></script>
     <script src="userInputScript.js"></script>
+
 </body>
 </html>
  
