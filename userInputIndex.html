@@ -217,26 +217,33 @@
                             <i class="uil-download-alt"></i>
                         </button>
 
-                        <button id = "listview_btn" class="listview" onclick="displayQRs()">
-                            <span id = "listview_btn_content" class="btnText">View QRs</span>
-                            <i class="uil uil-navigator"></i>
-                        </button>
+                            <button type = "button" id = "listview_btn" class="listview" onclick = "myFunction()">
+                                <span id = "listview_btn_content" class="btnText">View QRs</span>
+                                <i class="uil uil-navigator"></i>
+                            </button>
+                        
                     </div>
                 </div> 
             </div>
         </form>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <!-- <script src="displayQRsScript.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        function myFunction(){
+            window.location.href = "displayQRIndex.html"
+        }
+    </script>
     <script>
         setTimeout(function(){
             $('.loader_bg').fadeToggle();
         }, 1000);
     </script>
     
-    
     <script src="downloadQR.js"></script>
     <script src="userInputScript.js"></script>
+    <!-- <script src = "displayQRsScript.js"></script> -->
 
 </body>
 </html>
