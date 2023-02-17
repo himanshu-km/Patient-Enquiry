@@ -1,4 +1,5 @@
 async function displayQRs(){
+    // console.log("inside display qr function");
     var myHeaders = new Headers();
     myHeaders.append("Authorization", "Token afa6b7d257e09642868a47dbdbf3e8b03fbf422c");
 
@@ -12,7 +13,7 @@ async function displayQRs(){
     let parsedResponse = await response.json();
     let qrArray = parsedResponse.results;
     //console.log(qrArray);
-    for(let i = 0; i < qrArray.length; i++){
+    for(let i = 0; i < 8; i++){
         //console.log(qrArray[i].id);
         getQRLink(qrArray[i].id);
     }
@@ -42,14 +43,15 @@ async function getQRLink(qr_id){
 
  function displayQRImage(qrLink){
     let output = document.getElementById("output");
-        let img = document.createElement("img");
-        //img.src = `https://www.example.com/images/${i}.png`;
-        console.log(img);
-        img.src = qrLink;
-        console.log(img.src);
-        output.appendChild(img);
-        
-        let br = document.createElement("br");
-        output.appendChild(br);
-    console.log(output);
+    let img = document.createElement("img");
+    //img.src = `https://www.example.com/images/${i}.png`
+    //console.log(img);
+    img.src = qrLink;
+    img.width = 400;
+    img.height = 400;
+    //console.log(img.src);
+    output.appendChild(img);
+    let br = document.createElement("br");
+    output.appendChild(br);
+    //console.log(output);
  }

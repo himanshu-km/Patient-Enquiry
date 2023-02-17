@@ -4,11 +4,10 @@ async function createLanding() {
   btn.innerHTML = 'Downloading...';
   document.getElementById('submit_btn').disabled = true;
 
+  
   let form = document.getElementById("myForm");
-  // let myname = form["name"].value;
-  // let profession = form["profession"].value;
-  // let age = form["age"].value;
-  let myname = "doe"
+  //console.log();
+  let myname = form.elements[0].value;
 
   var myHeaders = new Headers();
   myHeaders.append(
@@ -45,6 +44,7 @@ async function createLanding() {
 }
 
 async function createQR(markdown_id, myname){
+  console.log("myname2",myname);
   var myHeaders = new Headers();
   myHeaders.append(
     "Authorization",
@@ -53,14 +53,31 @@ async function createQR(markdown_id, myname){
   myHeaders.append("Content-Type", "application/json");
 
   var raw = JSON.stringify({
-    name: "Markdown Card",
-    organization: 26724,
-    qr_type: 2,
-    campaign: {
-      content_type: 2,
-      markdown_card: markdown_id,
+    "name": "Markdown Card",
+    "organization": 26724,
+    "qr_type": 2,
+    "campaign": {
+      "content_type": 2,
+      "markdown_card": 295112
     },
-    location_enabled: false,
+    "location_enabled": false,
+    "attributes": {
+      "color": "#2595ff",
+      "colorDark": "#2595ff",
+      "margin": 80,
+      "isVCard": false,
+      "frameText": myname,
+      "logoImage": "https://d1bqobzsowu5wu.cloudfront.net/15406/36caec11f02d460aad0604fa26799c50",
+      "logoScale": 0.1992,
+      "frameColor": "#2595FF",
+      "frameStyle": "banner-bottom",
+      "logoMargin": 10,
+      "dataPattern": "square",
+      "eyeBallShape": "circle",
+      "gradientType": "none",
+      "eyeFrameColor": "#2595FF",
+      "eyeFrameShape": "rounded"
+    }
   });
 
   var requestOptions = {
