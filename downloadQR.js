@@ -290,7 +290,7 @@ async function displayQRs(){
                 <div class="product-price-container">
                     <a href="#" onclick = "delete_qr(${qr_id})" data-productId="ID" class="add-to-cart"><ion-icon name="trash-outline"></ion-icon></a>
                     <a href="#" onclick = "downloadQR2(${qr_id})" data-productId="ID" class="add-to-cart"><ion-icon name="download-outline"></ion-icon></a>
-                    <a href="#" onclick = "some_function()" data-productId="ID" class="add-to-cart"><ion-icon name="arrow-redo-circle-outline"></ion-icon>></a>
+                    <a href="#" onclick = "some_function()" data-productId="ID" class="add-to-cart"><ion-icon name="create-outline"></ion-icon></a>
                 </div>
                 </div>
                 
