@@ -9,15 +9,36 @@
      
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
-    <title>Patient Registration</title>
+    <title>Update Information</title>
+    <script>
+        let markdown_id, patient_name;
+        function getParams() {
+            var idx = document.URL.indexOf('?');
+            var params = new Array();
+            if (idx != -1) {
+                var pairs = document.URL.substring(idx+1, document.URL.length).split('&');
+                for (var i=0; i<pairs.length; i++) {
+                    nameVal = pairs[i].split('=');
+                    params[nameVal[0]] = nameVal[1];
+                }
+            }
+            console.log(params);
+            patient_name = params["patient_name"];
+            markdown_id = params["markdown_id"];
+            console.log("inside userinputindex2 pn", patient_name);
+            console.log("inside userinputindex2 mi", markdown_id);
+            return params;
+        }
+        params = getParams();
+        console.log("chadadada", patient_name);
+
+    </script>
 </head>
 <body>
-    <div class="loader_bg">
-        <div class="loader"></div>
-    </div>
+
     
     <div class="container">
-        <header>Patient Registration</header>
+        <header>Update Information</header>
         <!-- <span>Please fill in the form below</span>> -->
 
         <form action="#" id = "myForm">
@@ -28,13 +49,13 @@
                     <div class="fields">
                         <div class="input-field">
                             <label>Full Name</label>
-                            <input type="text" placeholder="Enter your name" value = "Dwight Schrute" required>
+                            <input id = "name_input" type="text" placeholder="Enter your name" disabled>
                         </div>
 
-                        <div class="input-field">
+                        <!-- <div class="input-field">
                             <label>Date of Birth</label>
-                            <input type="date" placeholder="Enter birth date" required>
-                        </div>
+                            <input type="date" placeholder="Enter birth date" value = "15/03/1965" required>
+                        </div> -->
 
                         <div class="input-field">
                             <label>Email</label>
@@ -211,39 +232,37 @@
                             <span class="btnText">Go Back</span>
                         </div>
                         
-                        <button id = "submit_btn" class="submit" onclick="createLanding()">
-                            <span id = "btn_content" class="btnText">Download QR</span>
-                            <i class="uil-download-alt"></i>
+                        <button id = "submit_btn" class="submit" onclick="updateInfo(markdown_id, patient_name)">
+                            <span id = "btn_content" class="btnText">Update &nbsp;</span>
+                            <iconify-icon icon="ic:baseline-done-outline"></iconify-icon>
                         </button>
 
-                            <button type = "button" id = "listview_btn" class="listview" onclick = "myFunction()">
-                                <span id = "listview_btn_content" class="btnText">View QRs</span>
-                                <i class="uil uil-navigator"></i>
-                            </button>
-                        
+                        <button type = "button" id = "listview_btn" class="listview" onclick = "myFunction()">
+                            <span id = "listview_btn_content" class="btnText">View QRs</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
                     </div>
                 </div> 
             </div>
         </form>
     </div>
 
-    <!-- <script src="displayQRsScript.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
         function myFunction(){
             window.location.href = "displayQRIndex.html"
         }
     </script>
-    <script>
-        setTimeout(function(){
-            $('.loader_bg').fadeToggle();
-        }, 1000);
-    </script>
-    
+
     <script src="downloadQR.js"></script>
     <script src="userInputScript.js"></script>
-    <!-- <script src = "displayQRsScript.js"></script> -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.5/iconify-icon.min.js"></script>
+
+
+    <script>
+        var input_name = document.getElementById("name_input");
+        console.log(input_name);
+        input_name.value = patient_name;
+    </script>
 
 </body>
 </html>
- 

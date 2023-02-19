@@ -73,7 +73,7 @@ async function createLanding() {
     organization: 26724,
     title: "Information Page of " + myname,
     markdown_body: "",
-    html_body:'<title>Information</title></head><body> <div class="container"> <h1>Form Information</h1> <ul> <li><span>Full Name:</span>'+myname+'</li> <li><span>Date of Birth:</span>'+pdob+'</li> <li><span>Email:</span>'+pemail+'</li> <li><span>Mobile Number:</span>'+pmobile+'</li> <li><span>Gender:</span>'+pgender+'</li> <li><span>Occupation:</span>'+poccupation+'</li> <li><span>ID Type:</span>'+pidtype+'</li> <li><span>ID Number:</span>'+pidnum+'</li> <li><span>Issued Authority:</span>'+pissue+'</li> <li><span>Emergency Contact:</span>'+ename+'</li> <li><span>Emergency Contact Mobile Number:</span>'+emob+'</li> <li><span>Emergency Contact Gender:</span>'+egender+'</li> <li><span>Address Type:</span>'+atype+'</li> <li><span>Nationality:</span>'+anat+'</li> <li><span>State:</span>'+astate+'</li> <li><span>District:</span>'+adis+'</li> <li><span>Block Number:</span>'+ablock+'</li> <li><span>Ward Number:</span>'+awrd+'</li> <li><span>Reason for Registration:</span>'+hreason+'</li> <li><span>Criticality:</span>'+hcri+'</li> <li><span>Ongoing Medication:</span>'+hmeds+'</li> <li><span>Insurance Company:</span>'+icomp+'</li> <li><span>Insurance ID:</span>'+iid+'</li> <li><span>Policy Holder\'s Name:</span>'+iname+'</li> </ul> </div></body></html>',
+    html_body:'<title>Information</title></head><body> <div class="container"> <h1>Form Information</h1> <ul> <li><span id = "fullnameid" >Full Name:</span>'+myname+'</li> <li><span id = "dobid" >Date of Birth:</span>'+pdob+'</li> <li><span id = "emailid" >Email:</span>'+pemail+'</li> <li><span id = "mobileid" >Mobile Number:</span>'+pmobile+'</li> <li><span id = "genderid" >Gender:</span>'+pgender+'</li> <li><span id = "occid" >Occupation:</span>'+poccupation+'</li> <li><span id = "idtypeid" >ID Type:</span>'+pidtype+'</li> <li><span id = "idnumid" >ID Number:</span>'+pidnum+'</li> <li><span id = "issueaid" >Issued Authority:</span>'+pissue+'</li> <li><span id = "emobileid" >Emergency Contact Mobile Number:</span>'+emob+'</li> <li><span id = "egenderid" >Emergency Contact Gender:</span>'+egender+'</li> <li><span id = "enameid" >Emergency Contact Name:</span>'+ename+'</li> <li><span id = "atypeid" >Address Type:</span>'+atype+'</li> <li><span id = "anatid" >Nationality:</span>'+anat+'</li> <li><span id = "astateid" >State:</span>'+astate+'</li> <li><span id = "adisid" >District:</span>'+adis+'</li> <li><span id = "ablockid" >Block Number:</span>'+ablock+'</li> <li><span id = "awrdid" >Ward Number:</span>'+awrd+'</li> <li><span id = "hreasonid" >Reason for Registration:</span>'+hreason+'</li> <li><span id = "hcriid" >Criticality:</span>'+hcri+'</li> <li><span id = "hmedsid" >Ongoing Medication:</span>'+hmeds+'</li> <li><span id = "icompid" >Insurance Company:</span>'+icomp+'</li> <li><span id = "iidid" >Insurance ID:</span>'+iid+'</li> <li><span id = "inameid" >Policy Holder\'s Name:</span>'+iname+'</li> </ul> </div></body></html>',
     css_body: "",
   });
 
@@ -290,7 +290,7 @@ async function displayQRs(){
                 <div class="product-price-container">
                     <a href="#" onclick = "delete_qr(${qr_id})" data-productId="ID" class="add-to-cart"><ion-icon name="trash-outline"></ion-icon></a>
                     <a href="#" onclick = "downloadQR2(${qr_id})" data-productId="ID" class="add-to-cart"><ion-icon name="download-outline"></ion-icon></a>
-                    <a href="#" onclick = "some_function()" data-productId="ID" class="add-to-cart"><ion-icon name="create-outline"></ion-icon></a>
+                    <a href="#" onclick = "editQR(${qr_id})" data-productId="ID" class="add-to-cart"><ion-icon name="create-outline"></ion-icon></a>
                 </div>
                 </div>
                 
@@ -298,6 +298,48 @@ async function displayQRs(){
             `;
     }
 }
+
+async function editQR(qr_id){
+  console.log("qr_id", qr_id);
+  console.log("inside editqr");
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Token afa6b7d257e09642868a47dbdbf3e8b03fbf422c");
+
+  var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+    let markdown_id= (await (await fetch("https://api.beaconstac.com/api/2.0/qrcodes/"+ qr_id +"/", requestOptions)).json()).campaign.markdown_card;
+    console.log(markdown_id);
+
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "Token afa6b7d257e09642868a47dbdbf3e8b03fbf422c");
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+let response2 = await fetch("https://api.beaconstac.com/api/2.0/markdowncards/" + markdown_id+ "/", requestOptions);
+let mybody_json = await response2.json();
+let htmlBody = mybody_json.html_body;
+console.log(htmlBody);
+
+var el = document.createElement('div');
+el.hidden = true;
+el.innerHTML = htmlBody;
+
+document.body.appendChild(el);
+
+let namy = document.getElementById("fullnameid").nextSibling.textContent;
+let emy = document.getElementById("emailid").nextSibling.textContent;
+console.log("namy & emy", namy," & ", emy);
+
+//console.log();
+window.location.href = "userInputIndex2.html?patient_name="+namy+"&patient_email="+emy+"&markdown_id="+markdown_id;
+}
+
 
 function delete_qr(qr_id){
 console.log("Deleted qr_id");
@@ -346,6 +388,105 @@ async function downloadQR2(qr_id){
  //   .then(result => console.log(result))
  //   .catch(error => console.log('error', error));  
  downloadImage(qr_link.png);
+}
+
+
+async function updateInfo(markdown_id, patient_name){
+  console.log("inside updateInfo markdown_id", markdown_id);
+
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Token afa6b7d257e09642868a47dbdbf3e8b03fbf422c");
+
+  var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+
+  let response = await fetch("https://api.beaconstac.com/api/2.0/markdowncards/"+markdown_id+"/", requestOptions);
+  let parsedResponse = await response.json();
+  console.log(parsedResponse.html_body);
+
+  let form = document.getElementById("myForm");
+  console.log(form.elements);
+
+  let myname = patient_name;
+  console.log(myname);
+  let pdob = form.elements[1].value;
+  console.log(pdob);
+  let pemail = form.elements[2].value;
+  console.log(pemail);
+  let pmobile = form.elements[3].value;
+  console.log(pmobile);
+  let pgender = form.elements[4].value;
+  console.log(pgender);
+  let poccupation = form.elements[5].value;
+  console.log(poccupation);
+
+  let pidtype = form.elements[6].value;
+  console.log(pidtype);
+  let pidnum = form.elements[7].value;
+  console.log(pidnum);
+  let pissue = form.elements[8].value;
+  console.log(pissue);
+
+  let ename = form.elements[9].value;
+  console.log(ename);
+  let emob = form.elements[10].value;
+  console.log(emob);
+  let egender = form.elements[11].value;
+  console.log("egender",egender);
+
+  let atype = form.elements[13].value;
+  console.log("atype",atype);
+  let anat = form.elements[14].value;
+  console.log("anat",anat);
+  let astate = form.elements[15].value;
+  console.log(astate);
+  let adis = form.elements[16].value;
+  console.log(adis);
+  let ablock = form.elements[17].value;
+  console.log(ablock);
+  let awrd = form.elements[18].value;
+  console.log(awrd);
+
+  let hreason = form.elements[19].value;
+  console.log(hreason);
+  let hcri = form.elements[20].value;
+  console.log(hcri);
+  let hmeds = form.elements[21].value;
+  console.log(hmeds);
+
+  let icomp = form.elements[22].value;
+  console.log(icomp);
+  let iid = form.elements[23].value;
+  console.log(iid);
+  let iname = form.elements[24].value;
+  console.log(iname);
+
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Token afa6b7d257e09642868a47dbdbf3e8b03fbf422c");
+  myHeaders.append("Content-Type", "application/json");
+
+  var raw = JSON.stringify({
+    "organization": 26724,
+    "html_body": '<title>Information</title></head><body> <div class="container"> <h1>Form Information</h1> <ul> <li><span id = "fullnameid" >Full Name:</span>'+myname+'</li> <li><span id = "dobid" >Date of Birth:</span>'+pdob+'</li> <li><span id = "emailid" >Email:</span>'+pemail+'</li> <li><span id = "mobileid" >Mobile Number:</span>'+pmobile+'</li> <li><span id = "genderid" >Gender:</span>'+pgender+'</li> <li><span id = "occid" >Occupation:</span>'+poccupation+'</li> <li><span id = "idtypeid" >ID Type:</span>'+pidtype+'</li> <li><span id = "idnumid" >ID Number:</span>'+pidnum+'</li> <li><span id = "issueaid" >Issued Authority:</span>'+pissue+'</li> <li><span id = "emobileid" >Emergency Contact Mobile Number:</span>'+emob+'</li> <li><span id = "egenderid" >Emergency Contact Gender:</span>'+egender+'</li> <li><span id = "enameid" >Emergency Contact Name:</span>'+ename+'</li> <li><span id = "atypeid" >Address Type:</span>'+atype+'</li> <li><span id = "anatid" >Nationality:</span>'+anat+'</li> <li><span id = "astateid" >State:</span>'+astate+'</li> <li><span id = "adisid" >District:</span>'+adis+'</li> <li><span id = "ablockid" >Block Number:</span>'+ablock+'</li> <li><span id = "awrdid" >Ward Number:</span>'+awrd+'</li> <li><span id = "hreasonid" >Reason for Registration:</span>'+hreason+'</li> <li><span id = "hcriid" >Criticality:</span>'+hcri+'</li> <li><span id = "hmedsid" >Ongoing Medication:</span>'+hmeds+'</li> <li><span id = "icompid" >Insurance Company:</span>'+icomp+'</li> <li><span id = "iidid" >Insurance ID:</span>'+iid+'</li> <li><span id = "inameid" >Policy Holder\'s Name:</span>'+iname+'</li> </ul> </div></body></html>',
+  });
+
+  var requestOptions = {
+    method: 'PUT',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+  };
+
+  fetch("https://api.beaconstac.com/api/2.0/markdowncards/"+markdown_id+"/", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Token afa6b7d257e09642868a47dbdbf3e8b03fbf422c");
+    myHeaders.append("Content-Type", "application/json");
+
 }
 
 // async function getQRLink(qr_id){
