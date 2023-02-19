@@ -41,7 +41,7 @@
         <header>Update Information</header>
         <!-- <span>Please fill in the form below</span>> -->
 
-        <form action="#" id = "myForm">
+        <form id = "myForm">
             <div class="form first">
                 <div class="details personal">
                     <span class="title">Personal Details</span>
@@ -52,19 +52,19 @@
                             <input id = "name_input" type="text" placeholder="Enter your name" disabled>
                         </div>
 
-                        <!-- <div class="input-field">
+                        <div class="input-field">
                             <label>Date of Birth</label>
-                            <input type="date" placeholder="Enter birth date" value = "15/03/1965" required>
-                        </div> -->
+                            <input type="date" placeholder="Enter birth date" required>
+                        </div>
 
                         <div class="input-field">
                             <label>Email</label>
-                            <input type="text" placeholder="Enter your email" value = "schrute@dundermifflin.com" required>
+                            <input type="text" placeholder="Enter your email" required>
                         </div>
 
                         <div class="input-field">
                             <label>Mobile Number</label>
-                            <input type="number" placeholder="Enter mobile number" value = "9876543210" required>
+                            <input type="number" placeholder="Enter mobile number" required>
                         </div>
 
                         <div class="input-field">
@@ -79,7 +79,7 @@
 
                         <div class="input-field">
                             <label>Occupation</label>
-                            <input type="text" placeholder="Enter your ccupation" value = "Assistant Regional Manager" required>
+                            <input type="text" placeholder="Enter your ccupation" required>
                         </div>
                     </div>
                 </div>
@@ -91,17 +91,17 @@
                     <div class="fields">
                         <div class="input-field">
                             <label>ID Type</label>
-                            <input type="text" placeholder="Enter ID type" value = "Aadhar" required>
+                            <input type="text" placeholder="Enter ID type" required>
                         </div>
 
                         <div class="input-field">
                             <label>ID Number</label>
-                            <input type="number" placeholder="Enter ID number" value = "54536" required>
+                            <input type="number" placeholder="Enter ID number" required>
                         </div>
 
                         <div class="input-field">
                             <label>Issued Authority</label>
-                            <input type="text" placeholder="Enter issued authority" value = "GOI" required>
+                            <input type="text" placeholder="Enter issued authority" required>
                         </div>
                     </div>
 
@@ -113,12 +113,12 @@
                     <div class="fields">
                         <div class="input-field">
                             <label>Full Name</label>
-                            <input type="text" placeholder="Enter your name" value = "Michael Scott" required>
+                            <input type="text" placeholder="Enter your name" required>
                         </div>
 
                         <div class="input-field">
                             <label>Mobile Number</label>
-                            <input type="number" placeholder="Enter mobile number" value = "203816988" required>
+                            <input type="number" placeholder="Enter mobile number" required>
                         </div>
 
                         <div class="input-field">
@@ -132,7 +132,7 @@
                         </div>
                     </div>
 
-                    <button class="nextBtn">
+                    <button type = "button" class="nextBtn">
                         <span class="btnText">Next</span>
                         <i class="uil uil-navigator"></i>
                     </button>
@@ -147,32 +147,32 @@
                     <div class="fields">
                         <div class="input-field">
                             <label>Address Type</label>
-                            <input type="text" placeholder="Permanent or Temporary" value = "Schrute Farms" required>
+                            <input type="text" placeholder="Permanent or Temporary" required>
                         </div>
 
                         <div class="input-field">
                             <label>Nationality</label>
-                            <input type="text" placeholder="Enter nationality" value = "American" required>
+                            <input type="text" placeholder="Enter nationality" required>
                         </div>
 
                         <div class="input-field">
                             <label>State</label>
-                            <input type="text" placeholder="Enter your state" value = "Pennsylvania" required>
+                            <input type="text" placeholder="Enter your state" required>
                         </div>
 
                         <div class="input-field">
                             <label>District</label>
-                            <input type="text" placeholder="Enter your district" value = "Scranton" required>
+                            <input type="text" placeholder="Enter your district" required>
                         </div>
 
                         <div class="input-field">
                             <label>Block Number</label>
-                            <input type="number" placeholder="Enter block number" value = "37" required>
+                            <input type="number" placeholder="Enter block number" required>
                         </div>
 
                         <div class="input-field">
                             <label>Ward Number</label>
-                            <input type="number" placeholder="Enter ward number" value = "03" required>
+                            <input type="number" placeholder="Enter ward number" required>
                         </div>
                     </div>
                 </div>
@@ -183,7 +183,7 @@
                     <div class="fields">
                         <div class="input-field">
                             <label>Reason for Registration</label>
-                            <input type="text" placeholder="Enter reason" value = "Hot-Dog Fingers" required>
+                            <input type="text" placeholder="Enter reason" required>
                         </div>
 
                         <div class="input-field">
@@ -212,17 +212,17 @@
                     <div class="fields">
                         <div class="input-field">
                             <label>Insurance Company</label>
-                            <input type="text" placeholder="Enter company" value = "LIC" required>
+                            <input type="text" placeholder="Enter company" required>
                         </div>
 
                         <div class="input-field">
                             <label>Insurance ID</label>
-                            <input type="text" placeholder="Enter ID" value = "96125" required>
+                            <input type="text" placeholder="Enter ID" required>
                         </div>
 
                         <div class="input-field">
                             <label>Policy Holder's Name</label>
-                            <input type="text" placeholder="Enter name" value = "Michael Gary Scott" required>
+                            <input type="text" placeholder="Enter name" required>
                         </div>
                     </div>
 
@@ -232,7 +232,7 @@
                             <span class="btnText">Go Back</span>
                         </div>
                         
-                        <button id = "submit_btn" class="submit" onclick="updateInfo(markdown_id, patient_name)">
+                        <button type = "button" id = "submit_btn" class="submit" onclick="updateInfo(markdown_id, patient_name)">
                             <span id = "btn_content" class="btnText">Update &nbsp;</span>
                             <iconify-icon icon="ic:baseline-done-outline"></iconify-icon>
                         </button>
