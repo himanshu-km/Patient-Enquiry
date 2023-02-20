@@ -23,10 +23,34 @@
                 }
             }
             console.log(params);
-            patient_name = params["patient_name"];
             markdown_id = params["markdown_id"];
-            console.log("inside userinputindex2 pn", patient_name);
-            console.log("inside userinputindex2 mi", markdown_id);
+            patient_name = params["patient_name"];
+            date_of_birth = params["dob"];
+            patient_email = params["patient_email"];
+            patient_mobile = params["phonenum"];
+            patient_gender = params["gender"];
+            patient_occ = params["occupation"];
+            id_type = params["idtype"];
+            id_num = params["idnum"];
+            id_issue = params["issuedby"];
+            e_mob = params["ecnum"];
+            e_gen = params["ecgender"];
+            e_name = params["ecname"];
+            add_type = params["add_type"];
+            add_nation = params["pnation"];
+            add_state = params["pstate"];
+            console.log("add_state",add_state);
+            add_dis = params["pdis"];
+            add_block = params["pblock"];
+            add_wrd = params["pwrd"];
+            h_reason = params["preason"];
+            h_critic = params["pcric"];
+            h_meds = params["pmed"];
+            i_comp = params["ins_comp"];
+            i_id = params["ins_id"];
+            i_name = params["ins_name"];
+            //console.log("inside userinputindex2 pn", patient_name);
+            //console.log("inside userinputindex2 mi", markdown_id);
             return params;
         }
         params = getParams();
@@ -54,23 +78,23 @@
 
                         <div class="input-field">
                             <label>Date of Birth</label>
-                            <input type="date" placeholder="Enter birth date" required>
+                            <input id = "dob_input" type="date" placeholder="Enter birth date" disabled>
                         </div>
 
                         <div class="input-field">
                             <label>Email</label>
-                            <input type="text" placeholder="Enter your email" required>
+                            <input id = "email_input" type="text" placeholder="Enter your email" disabled>
                         </div>
 
                         <div class="input-field">
                             <label>Mobile Number</label>
-                            <input type="number" placeholder="Enter mobile number" required>
+                            <input id = "mob_input" type="number" placeholder="Enter mobile number" disabled>
                         </div>
 
                         <div class="input-field">
                             <label>Gender</label>
-                            <select>
-                                <option disabled selected>Select gender</option>
+                            <select id = "gender_input" disabled>
+                                <option selected>Select gender</option>
                                 <option>Male</option>
                                 <option>Female</option>
                                 <option>Others</option>
@@ -79,7 +103,7 @@
 
                         <div class="input-field">
                             <label>Occupation</label>
-                            <input type="text" placeholder="Enter your ccupation" required>
+                            <input id = "occ_input" type="text" placeholder="Enter your ccupation" disabled>
                         </div>
                     </div>
                 </div>
@@ -91,17 +115,17 @@
                     <div class="fields">
                         <div class="input-field">
                             <label>ID Type</label>
-                            <input type="text" placeholder="Enter ID type" required>
+                            <input id = "idtype_input" type="text" placeholder="Enter ID type" disabled>
                         </div>
 
                         <div class="input-field">
                             <label>ID Number</label>
-                            <input type="number" placeholder="Enter ID number" required>
+                            <input id = "idnum_input" type="number" placeholder="Enter ID number" disabled>
                         </div>
 
                         <div class="input-field">
                             <label>Issued Authority</label>
-                            <input type="text" placeholder="Enter issued authority" required>
+                            <input id = "issued_input" type="text" placeholder="Enter issued authority" disabled>
                         </div>
                     </div>
 
@@ -113,18 +137,18 @@
                     <div class="fields">
                         <div class="input-field">
                             <label>Full Name</label>
-                            <input type="text" placeholder="Enter your name" required>
+                            <input id = "ename_input" type="text" placeholder="Enter your name" disabled>
                         </div>
 
                         <div class="input-field">
                             <label>Mobile Number</label>
-                            <input type="number" placeholder="Enter mobile number" required>
+                            <input id = "emob_input" type="number" placeholder="Enter mobile number" disabled>
                         </div>
 
                         <div class="input-field">
                             <label>Gender</label>
-                            <select>
-                                <option disabled selected>Select gender</option>
+                            <select id = "egen_input" disabled>
+                                <option disabled>Select gender</option>
                                 <option>Male</option>
                                 <option>Female</option>
                                 <option>Others</option>
@@ -147,32 +171,32 @@
                     <div class="fields">
                         <div class="input-field">
                             <label>Address Type</label>
-                            <input type="text" placeholder="Permanent or Temporary" required>
+                            <input id = "addtype_input" type="text" placeholder="Permanent or Temporary" disabled>
                         </div>
 
                         <div class="input-field">
                             <label>Nationality</label>
-                            <input type="text" placeholder="Enter nationality" required>
+                            <input id = "addnation_input" type="text" placeholder="Enter nationality" disabled>
                         </div>
 
                         <div class="input-field">
                             <label>State</label>
-                            <input type="text" placeholder="Enter your state" required>
+                            <input id="addstate_input" type = "text" placeholder="Enter your state" disabled>
                         </div>
 
                         <div class="input-field">
                             <label>District</label>
-                            <input type="text" placeholder="Enter your district" required>
+                            <input id="adddis_input" type="text" placeholder="Enter your district" disabled>
                         </div>
 
                         <div class="input-field">
                             <label>Block Number</label>
-                            <input type="number" placeholder="Enter block number" required>
+                            <input id="addblk_input" type="number" placeholder="Enter block number" disabled>
                         </div>
 
                         <div class="input-field">
                             <label>Ward Number</label>
-                            <input type="number" placeholder="Enter ward number" required>
+                            <input id="addwrd_input" type="number" placeholder="Enter ward number" disabled>
                         </div>
                     </div>
                 </div>
@@ -183,12 +207,12 @@
                     <div class="fields">
                         <div class="input-field">
                             <label>Reason for Registration</label>
-                            <input type="text" placeholder="Enter reason" required>
+                            <input id="reason_input" type="text" placeholder="Enter reason" required>
                         </div>
 
                         <div class="input-field">
                             <label>Criticality</label>
-                            <select required>
+                            <select id="critic_input" required>
                                 <option disabled selected>Select criticality</option>
                                 <option>Critical</option>
                                 <option>Not Critical</option>
@@ -197,7 +221,7 @@
 
                         <div class="input-field">
                             <label>Ongoing Medication?</label>
-                            <select required>
+                            <select id="meds_input" required>
                                 <option disabled selected>Select</option>
                                 <option>Yes</option>
                                 <option>No</option>
@@ -212,17 +236,17 @@
                     <div class="fields">
                         <div class="input-field">
                             <label>Insurance Company</label>
-                            <input type="text" placeholder="Enter company" required>
+                            <input id="comp_input" type="text" placeholder="Enter company" disabled>
                         </div>
 
                         <div class="input-field">
                             <label>Insurance ID</label>
-                            <input type="text" placeholder="Enter ID" required>
+                            <input id="iid_input" type="text" placeholder="Enter ID" disabled>
                         </div>
 
                         <div class="input-field">
                             <label>Policy Holder's Name</label>
-                            <input type="text" placeholder="Enter name" required>
+                            <input id="iname_input" type="text" placeholder="Enter name" disabled>
                         </div>
                     </div>
 
@@ -259,9 +283,32 @@
 
 
     <script>
-        var input_name = document.getElementById("name_input");
-        console.log(input_name);
-        input_name.value = patient_name;
+        document.getElementById("name_input").value = patient_name;
+        document.getElementById("dob_input").value = date_of_birth;
+        document.getElementById("email_input").value = patient_email;
+        document.getElementById("mob_input").value = patient_mobile;
+        document.getElementById("gender_input").value = patient_gender;
+        document.getElementById("occ_input").value = patient_occ;
+        document.getElementById("idtype_input").value = id_type;
+        document.getElementById("idnum_input").value = id_num;
+        document.getElementById("issued_input").value = id_issue;
+        document.getElementById("ename_input").value = e_name;
+        document.getElementById("emob_input").value = e_mob;
+        document.getElementById("egen_input").value = e_gen;
+        document.getElementById("addtype_input").value = add_type;
+        document.getElementById("addnation_input").value = add_nation;
+        console.log(document.getElementById("addstate_input"));
+        document.getElementById("addstate_input").value = add_state;
+        document.getElementById("adddis_input").value = add_dis;
+        document.getElementById("addblk_input").value = add_block;
+        document.getElementById("addwrd_input").value = add_wrd;
+        document.getElementById("reason_input").value = h_reason;
+        document.getElementById("critic_input").value = h_critic;
+        document.getElementById("meds_input").value = h_meds;
+        document.getElementById("comp_input").value = i_comp;
+        document.getElementById("iid_input").value = i_id;
+        document.getElementById("iname_input").value = i_name;
+
     </script>
 
 </body>

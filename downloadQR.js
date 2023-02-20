@@ -333,11 +333,33 @@ el.innerHTML = htmlBody;
 document.body.appendChild(el);
 
 let namy = document.getElementById("fullnameid").nextSibling.textContent;
+let dob = document.getElementById("dobid").nextSibling.textContent;
 let emy = document.getElementById("emailid").nextSibling.textContent;
-console.log("namy & emy", namy," & ", emy);
+let mob = document.getElementById("mobileid").nextSibling.textContent;
+let gen = document.getElementById("genderid").nextSibling.textContent;
+let occ = document.getElementById("occid").nextSibling.textContent;
+let idt = document.getElementById("idtypeid").nextSibling.textContent;
+let idn = document.getElementById("idnumid").nextSibling.textContent;
+let iss = document.getElementById("issueaid").nextSibling.textContent;
+let ecmn = document.getElementById("emobileid").nextSibling.textContent;
+let ecg = document.getElementById("egenderid").nextSibling.textContent;
+let ecn = document.getElementById("enameid").nextSibling.textContent;
+let adt = document.getElementById("atypeid").nextSibling.textContent;
+let nat = document.getElementById("anatid").nextSibling.textContent;
+let stat = document.getElementById("astateid").nextSibling.textContent;
+let dis = document.getElementById("adisid").nextSibling.textContent;
+let blc = document.getElementById("ablockid").nextSibling.textContent;
+let wrd = document.getElementById("awrdid").nextSibling.textContent;
+let hreason = document.getElementById("hreasonid").nextSibling.textContent;
+let crit = document.getElementById("hcriid").nextSibling.textContent;
+let onm = document.getElementById("hmedsid").nextSibling.textContent;
+let insc = document.getElementById("icompid").nextSibling.textContent;
+let insid = document.getElementById("iidid").nextSibling.textContent;
+let insn = document.getElementById("inameid").nextSibling.textContent;
+
 
 //console.log();
-window.location.href = "userInputIndex2.html?patient_name="+namy+"&patient_email="+emy+"&markdown_id="+markdown_id;
+window.location.href = "userInputIndex2.html?markdown_id="+markdown_id+"&patient_name="+namy+"&dob="+dob+"&patient_email="+emy+"&phonenum="+mob+"&gender="+gen+"&occupation="+occ+"&idtype="+idt+"&idnum="+idn+"&issuedby="+iss+"&ecnum="+ecmn+"&ecgender="+ecg+"&ecname="+ecn+"&add_type="+adt+"&pnation="+nat+"&pstate="+stat+"&pdis="+dis+"&pblock="+blc+"&pwrd="+wrd+"&preason="+hreason+"&pcric="+crit+"&pmed="+onm+"&ins_comp="+insc+"&ins_id="+insid+"&ins_name="+insn;
 }
 
 
