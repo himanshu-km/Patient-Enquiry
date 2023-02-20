@@ -7,14 +7,18 @@
     <link rel="stylesheet" href="displayQRsStyle.css">
     <!-- <script src = "displayQRsScript.js"></script> -->
     <script src = "downloadQR.js"></script>
+    
     <!-- <link rel="stylesheet" href="userInputStyle.css"> -->
     <title>Document</title>
 </head>
-<body>
+<body >
 
     <!-- <div> List of all QR Codes </div>
     <div id ="output" class= "pond"> 
     </div> -->
+    <div id = "loader2" class="loader_bg">
+      <div id = "loader1" class="loader"></div>
+    </div>
     <nav class="navbar">
         <div class="brand-title">&nbsp;&nbsp;Beaconstac</div>
         <a href="#" class="toggle-button">
@@ -24,12 +28,14 @@
         </a>
         <div class="navbar-links">
           <ul>
-            <li><a href="userInputIndex.html">Home</a></li>
+            <li><a href="userInputIndex.html">Create QR</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Contact&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
           </ul>
         </div>
       </nav>
+
+      
 
       <!-- <div class="backBtn">
         <i class="uil uil-navigator"></i>
@@ -39,7 +45,12 @@
         <h2 class="product-title">&nbsp;&nbsp;&nbsp;&nbsp;QR-Codes</h2>
     </div>
 
-    <div class="container">
+    <!-- <div id = "loading1"><iframe src="https://giphy.com/embed/xUA7aQpQ8BK4A66oJa" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/water-jump-splash-xUA7aQpQ8BK4A66oJa">via GIPHY</a></p></div> -->
+    <!-- <div class="loader">Loading...</div> -->
+
+    
+
+    <div id="QRContainer"class="container" style="display: none;">
         <div class="products">
         </div>
 
@@ -50,5 +61,6 @@
 
     <script type="text/javascript">displayQRs()</script>
     <!-- <script src="downloadQR.js"></script> -->
+
 </body>
 </html>

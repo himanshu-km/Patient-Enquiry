@@ -282,11 +282,8 @@ async function displayQRs(){
                   title.length > 18 ? title.substring(0, 18).concat(' ...') : title
                 }</h2>
                 
-                <p class="product-description">${
-                  description.length > 80
-                    ? description.substring(0, 80).concat(' ...more')
-                    : description
-                }</p>
+              
+                
                 <div class="product-price-container">
                     <a href="#" onclick = "delete_qr(${qr_id})" data-productId="ID" class="add-to-cart"><ion-icon name="trash-outline"></ion-icon></a>
                     <a href="#" onclick = "downloadQR2(${qr_id})" data-productId="ID" class="add-to-cart"><ion-icon name="download-outline"></ion-icon></a>
@@ -297,6 +294,7 @@ async function displayQRs(){
             </div>
             `;
     }
+    hideLoader();
 }
 
 async function editQR(qr_id){
@@ -414,6 +412,8 @@ async function downloadQR2(qr_id){
 
 
 async function updateInfo(markdown_id, patient_name){
+  let btn = document.getElementById("btn_content1");
+  btn.innerHTML = 'Updating...';
   console.log("inside updateInfo markdown_id", markdown_id);
 
   var myHeaders = new Headers();
@@ -509,6 +509,8 @@ async function updateInfo(markdown_id, patient_name){
     myHeaders.append("Authorization", "Token afa6b7d257e09642868a47dbdbf3e8b03fbf422c");
     myHeaders.append("Content-Type", "application/json");
 
+  
+  btn.innerHTML = 'Update Again\&nbsp;';
 }
 
 // async function getQRLink(qr_id){
@@ -576,3 +578,14 @@ async function updateInfo(markdown_id, patient_name){
 //   }
 //   fetchProducts('https://api.escuelajs.co/api/v1/products');
 // });
+
+
+function hideLoader()
+      {
+        var load1  = document.getElementById("loader1");
+        var load2  = document.getElementById("loader2");
+        //console.log("lloadermnew", load);
+        document.getElementById("QRContainer").style.display='block'
+        load1.style.display = 'none';
+        load2.style.display = 'none';
+      }
